@@ -4,7 +4,7 @@ describe("Consulta", function() {
 
   /*antes de rodar cada teste roda esse metodo para criar o paciente*/
   beforeEach(function() {
-    guilherme = new Paciente("Guilherme", 28, 72, 1.80);
+    guilherme = new PacienteBuilder().constroi();
   });
 
   describe("consultas do tipo retorno", function() {
