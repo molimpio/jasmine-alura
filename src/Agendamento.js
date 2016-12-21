@@ -3,8 +3,13 @@ function Agendamento() {
   var clazz = {
 
     para: function(consulta) {
-      var vinteDiasEmMilisegundos = 1000 * 60 * 60 * 24 * 20;
+      var umDiaEmMilisegundos = 1000 * 60 * 60 * 24;
+      var vinteDiasEmMilisegundos = umDiaEmMilisegundos * 20;
       var novaData = new Date(consulta.getData().getTime() + vinteDiasEmMilisegundos);
+
+      /*tratando caso a consulta caia no sabado ou domingo*/
+      while(novaData.getDay() == 0 || novaData.getDay() == 6)
+        novaData = new Date(novaData.getTime() + umDiaEmMilisegundos);
 
       var novaConsulta = new Consulta(
         consulta.getNome(),
